@@ -19,8 +19,8 @@
       }
 
       *{box-sizing:border-box;margin:0;padding:0}
-      html,body{height:100%;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:transparent;color:var(--text);overflow-x:hidden}
-      body{display:flex;align-items:center;justify-content:center}
+      html,body{min-height:100%;font-family:'Inter',system-ui,Segoe UI,Roboto,Arial,sans-serif;background:transparent;color:var(--text);overflow-x:hidden}
+      body{min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px 16px;overflow-y:auto}
 
       .bg-video{position:fixed;inset:0;z-index:0;overflow:hidden}
       .bg-video video{position:absolute;top:50%;left:50%;width:auto;height:105%;min-width:105%;min-height:105%;transform:translate(-50%,-50%);object-fit:cover;filter:brightness(.45) saturate(1.2) contrast(.95)}
@@ -74,7 +74,18 @@
       .progress::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 0 22px rgba(116,214,255,0.8);cursor:pointer}
       .time{min-width:40px;text-align:right}
 
-      @media (max-width:420px){.card{padding:24px}.title{font-size:1.85rem}.avatar{width:104px;height:104px}.track-title{font-size:.95rem}}  
+      @media (max-width:768px){
+        body{padding:16px 12px;align-items:flex-start}
+        .entry-overlay{display:none}
+        .card{width:min(100%,420px);padding:24px 18px;gap:18px;margin:12px 0}
+        .title{font-size:1.9rem}
+        .avatar{width:104px;height:104px}
+        .social-panel{flex-direction:column;gap:12px}
+        .player-panel{padding:16px}
+        .track-title{font-size:.95rem}
+      }
+
+      @media (max-width:420px){.card{padding:20px}.title{font-size:1.75rem}.avatar{width:96px;height:96px}.track-title{font-size:.9rem}}  
     </style>
 </head>
 <body>
@@ -100,7 +111,7 @@
       </div>
     </div>
     <h1 class="title">Eslam Malki</h1>
-    <a class="subtitle-button" id="aboutBtn" href="tajarib/index.html">About Me</a>
+    <a class="subtitle-button" id="aboutBtn" href="https://islammallki.github.io/EslamEmpire/" target="_blank" rel="noopener noreferrer">About Me</a>
     <div class="profile-views" data-tooltip="Profile Views Baby"><svg viewBox="0 0 24 24" aria-hidden="true" style="width:18px;height:18px;fill:currentColor;filter:drop-shadow(0 0 12px rgba(116,214,255,0.6));"><path d="M12 4.5c-4.37 0-7.95 3.11-8.81 7.43a.75.75 0 0 0 0 .54C4.05 17.39 7.63 20.5 12 20.5s7.95-3.11 8.81-7.43a.75.75 0 0 0 0-.54C19.95 7.61 16.37 4.5 12 4.5Zm0 13c-3.3 0-6.14-2-7.4-5 1.26-3 4.1-5 7.4-5s6.14 2 7.4 5c-1.26 3-4.1 5-7.4 5Zm0-8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm0 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg><span>354</span></div>
     <div class="rating-container" aria-label="Profile rating">
       <div class="rating-label">Rate Me</div>
@@ -237,8 +248,9 @@
 
     const aboutBtn = document.getElementById('aboutBtn');
     if(aboutBtn){
-      aboutBtn.addEventListener('click', ()=>{
-        window.location.href = 'tajarib/index.html';
+      aboutBtn.addEventListener('click', (event)=>{
+        event.preventDefault();
+        window.open('https://islammallki.github.io/EslamEmpire/', '_blank', 'noopener,noreferrer');
       });
     }
   </script>
